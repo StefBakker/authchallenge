@@ -8,18 +8,32 @@
 	<link rel="stylesheet" href="<?= URL ?>css/style.css">
 </head>
 <body>
-	<nav>
-	<ul>
-        <?php // show 'login' link (if user not logged in) or 'logout' link (if user is logged in)
-        if (isset($_SESSION['username'])) { ?>
-            <li><a href="<?= URL ?>user/logout"><?= $_SESSION['username'] ?> afmelden</a></li>
-        <?php } else { ?>
-            <li><a href="<?= URL ?>user/login">Inloggen</a></li>
-        <?php } ?>
+	<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Examenplanning</a>
+            </div>
 
-		<li><a href="<?= URL ?>home/index">Home</a></li>
-		<li><a href="<?= URL ?>student/index">Students</a></li>
-	</ul>
+            <ul class="nav navbar-nav">
+                <li><a href="<?= URL ?>home/index">Home</a></li>
+                <li><a href="<?= URL ?>student/index">Students</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <?php // show 'docent' if user has 'docent' property
+                if (isset($_SESSION['userdocent']) && $_SESSION['userdocent'] == '1') { ?>
+                    <li><a href="#"><span class="glyphicon glyphicon-education"></span> [docent]</a></li>
+                <?php } ?>
+
+                <?php // show 'login' link (if user not logged in) or 'logout' link (if user is logged in)
+                if (isset($_SESSION['username'])) { ?>
+                    <li><a href="<?= URL ?>user/logout"><span class="glyphicon glyphicon-user"></span> <?= ucwords($_SESSION['username']); ?> afmelden</a></li>
+                <?php } else { ?>
+                    <li><a href="<?= URL ?>user/login"><span class="glyphicon glyphicon-log-in"></span> Inloggen</a></li>
+                <?php } ?>
+            </ul>
+
+        </div>
 	</nav>
 
     <?php
