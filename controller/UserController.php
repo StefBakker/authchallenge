@@ -2,6 +2,79 @@
 
 require(ROOT . "model/UserModel.php");
 
+function all() {
+    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om alle studenten te bekijken.'); return false; }
+
+    render("user/all", array(
+        'users' => getAllUsers()
+    ));
+}
+
+function create() {
+    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om een student aan te maken.'); return false; }
+
+    render("user/create");
+}
+
+function createSave() {
+    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om een student op te slaan.'); return false; }
+
+    if (!createUser()) {
+        header("Location:" . URL . "error/index");
+        exit();
+    }
+
+    header("Location:" . URL . "user/all");
+}
+
+
+function edit($id)
+{
+    if ( isDocent() == false ) {
+        sendRedirectWithError('U hebt niet de juiste rechten om een student te bewerken.');
+        exit;
+    }
+
+    $user = getUser($id);
+    if (!$user) {
+        sendRedirectWithError('Deze gebruiker bestaat niet.');
+        exit;
+    }
+
+    render("user/edit", array(
+        'user' => $user
+    ));
+}
+
+function editSave()
+{
+    if ( isDocent() == false ) {
+        sendRedirectWithError('U hebt niet de juiste rechten om een student op te slaan.');
+        exit;
+    }
+
+    if (!editUser()) {
+        sendRedirectWithError('Er is een fout opgetreden. De student kon niet verwijderd worden.');
+        exit();
+    }
+
+    header("Location:" . URL . "user/all");
+}
+
+
+function delete($id)
+{
+    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om een student te verwijderen.'); return false; }
+
+    if (!deleteUser($id)) {
+        header("Location:" . URL . "error/index");
+        exit();
+    }
+
+    header("Location:" . URL . "user/all");
+}
+
+
 function login()
 {
     render("user/login");
@@ -20,9 +93,7 @@ function loginProcess()
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $user = GetUser($username, $password);
-        //var_export( $user);
-        //die();
+        $user = checkUser($username, $password);
 
         if ($user == false) {
             // login error; redirect to login form
@@ -39,4 +110,13 @@ function loginProcess()
     }
 
     header('location: ' . URL . 'home/index');
+}
+
+function isDocent() {
+    return (isset($_SESSION['userdocent']) && $_SESSION['userdocent'] == 1 );
+}
+
+function sendRedirectWithError($message) {
+    $_SESSION['errors'][] = $message;
+    header("Location:" . URL . 'home/index');
 }

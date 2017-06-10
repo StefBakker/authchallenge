@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Studenten app</title>	
+	<title>Examenplanning</title>
 	<link rel="stylesheet" href="<?= URL ?>css/bootstrap-3.3.7.css">
 	<link rel="stylesheet" href="<?= URL ?>css/style.css">
 </head>
@@ -18,8 +18,9 @@
                 <li><a href="<?= URL ?>home/index">Home</a></li>
                 <li><a href="<?= URL ?>student/index">Students</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
 
+            <!-- navbar part that's on the right side -->
+            <ul class="nav navbar-nav navbar-right">
                 <?php // show 'docent' if user has 'docent' property
                 if (isset($_SESSION['userdocent']) && $_SESSION['userdocent'] == '1') { ?>
                     <li><a href="#"><span class="glyphicon glyphicon-education"></span> [docent]</a></li>
