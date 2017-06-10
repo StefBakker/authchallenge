@@ -50,7 +50,7 @@
     <?php
         // if errors found, print them
         if (isset($_SESSION['errors']) && is_array($_SESSION['errors']) && sizeof($_SESSION['errors'])>0 ) {
-            echo '<div class="alert alert-danger"><strong>Fout!</strong> <ul>';
+            echo '<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Fout!</strong> <ul>';
             foreach($_SESSION['errors'] as $error) {
                 echo '<li>' . $error . '</li>';
             }
@@ -59,5 +59,20 @@
             // errors are shown. now remove them from session
             $_SESSION['errors'] = [];
         }
+    ?>
+
+
+    <?php
+    // if info messages found, print them
+    if (isset($_SESSION['info']) && is_array($_SESSION['info']) && sizeof($_SESSION['info'])>0 ) {
+        echo '<div class="alert alert-success alert-dismissable" id="alert-success-1"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Gelukt!</strong> <ul>';
+        foreach($_SESSION['info'] as $info) {
+            echo '<li>' . $info . '</li>';
+        }
+        echo '</ul></div>';
+
+        // errors are shown. now remove them from session
+        $_SESSION['info'] = [];
+    }
     ?>
 
