@@ -11,12 +11,22 @@
 	<nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Examenplanning</a>
+                <a class="navbar-brand" href="<?= URL ?>home/index">Examenplanning</a>
             </div>
 
             <ul class="nav navbar-nav">
                 <li><a href="<?= URL ?>home/index">Home</a></li>
-                <li><a href="<?= URL ?>student/index">Students</a></li>
+
+                <?php if (isset($_SESSION['userdocent']) && $_SESSION['userdocent'] == '1') { ?>
+                    <li><a href="<?= URL ?>user/all">Studenten</a></li>
+                    <li><a href="<?= URL ?>planning/all">Alle geplande examens</a></li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['userdocent']) && $_SESSION['userdocent'] == '0') { ?>
+                    <li><a href="<?= URL ?>planning/student">Mijn examens</a></li>
+                <?php } ?>
+
+
             </ul>
 
             <!-- navbar part that's on the right side -->

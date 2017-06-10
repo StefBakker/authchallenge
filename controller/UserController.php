@@ -83,6 +83,7 @@ function login()
 function logout() {
     unset($_SESSION['username']);
     unset($_SESSION['userdocent']);
+    unset($_SESSION['userid']);
 
     header('location: ' . URL . 'home/index');
 }
@@ -103,6 +104,7 @@ function loginProcess()
             // user found. store username and level in session
             $_SESSION['username'] = $user['name'];
             $_SESSION['userdocent'] = $user['docent'];
+            $_SESSION['userid'] = $user['id'];
         }
     } else {
         $_SESSION['errors'][] = 'Vul alstublieft een gebruikersnaam en wachtwoord in.';

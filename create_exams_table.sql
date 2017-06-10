@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2017 om 20:48
+-- Gegenereerd op: 10 jun 2017 om 20:49
 -- Serverversie: 5.7.11
 -- PHP-versie: 5.6.29
 
@@ -23,40 +23,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `users`
+-- Tabelstructuur voor tabel `exams`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `exams`;
+CREATE TABLE `exams` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `docent` int(11) NOT NULL DEFAULT '0'
+  `name` varchar(100) NOT NULL,
+  `in_school` int(11) NOT NULL,
+  `in_company` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Tabel leegmaken voor invoegen `users`
+-- Tabel leegmaken voor invoegen `exams`
 --
 
-TRUNCATE TABLE `users`;
+TRUNCATE TABLE `exams`;
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Gegevens worden geëxporteerd voor tabel `exams`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `docent`) VALUES
-(1, 'docent', 'd10df0042b4a1685e913cfd2769f05a8eb5e5f6f', 1),
-(2, 'Tom', 'd10df0042b4a1685e913cfd2769f05a8eb5e5f6f', 0),
-(3, 'Mike', 'd10df0042b4a1685e913cfd2769f05a8eb5e5f6f', 0),
-(5, 'Ralph', 'd10df0042b4a1685e913cfd2769f05a8eb5e5f6f', 0);
+INSERT INTO `exams` (`id`, `name`, `in_school`, `in_company`) VALUES
+(1, 'proeve 1 (ontwerpen)', 0, 1),
+(2, 'proeve 2 (realiseren)', 1, 0),
+(3, 'proeve 3 (opleveren)', 0, 1);
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `users`
+-- Indexen voor tabel `exams`
 --
-ALTER TABLE `users`
+ALTER TABLE `exams`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -64,10 +63,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `users`
+-- AUTO_INCREMENT voor een tabel `exams`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `exams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
