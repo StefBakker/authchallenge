@@ -10,13 +10,22 @@ Authorisation Challenge
 - is PHPMyAdmin geinstalleerd en running?  (probeer via PHPMyAdmin je databases te bekijken)
 
 ## Installatie
-- maak op http://github.com een nieuwe repo aan voor dit project. Kopieer de link van de nieuwe repo *ik gebruik `git remote add origin https://github.com/petersnoek/authchallenge.git`*
+- maak op http://github.com een nieuwe repo `authchallenge` aan voor dit project. Kopieer de link van de nieuwe repo (bijvoorbeeld `https://github.com/*jouwnaam*/authchallenge.git`);
 - open PHPMyAdmin en maak een nieuwe database gebruiker `authchallenge` met wachtwoord `authchallenge` en zet het vinkje bij de optie om een database met dezelfde naam `authchallenge` te maken;
-- maak een nieuwe map in de webroot  *ik gebruik `~/Sites/authchallenge`*
+- maak een nieuwe map `authchallenge` in de webroot  *ik gebruik `~/Sites/authchallenge`, als je WAMP gebruikt `c:/wamp/www/authchallenge` en bij XAMPP `c:/xamp/htdocs/authchallenge`*
 - initialiseer een nieuwe git repo  (in je console ga je naar de nieuwe map, type: `git init`)
 - maak verbinding met de davinci-ao repo voor framework-php  (`git remote add dvc https://github.com/davinci-ao/framework-php.git`
 - haal de laatste versie van de master-branche binnen (`git pull dvc master`)
 - nu heb je alle bestanden van het framework-php in jouw lokale map staan
 - koppel je map nu aan de nieuw gemaakte eigen repo (`git remote add origin https://github.com/petersnoek/authchallenge.git`)
 
-Vergeet niet de config.php voor gebruik aan te passen aan jou wamp omgeving.
+## Configuratie
+- open PHPMyAdmin, selecteer database `authchallenge` en run het script `framework.sql` (behalve de eerste twee regels want je hebt al een database gemaakt)
+- pas het bestand `core/config.php` aan om je database te kunnen gebruiken:  
+```php
+define('DB_NAME', 'authchallenge');
+define('DB_USER', 'authchallenge');
+define('DB_PASS', 'authchallenge');
+```
+- pas het bestand `view/templates/header.php` aan; op regel 13 moet de url zijn `student/index`;
+- test nu het geinstalleerde framework via http://localhost/authchallenge. Maak een student aan, bewerk deze, en verwijder 'm.'

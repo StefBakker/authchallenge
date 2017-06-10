@@ -2,9 +2,9 @@
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'framework');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'authchallenge');
+define('DB_USER', 'authchallenge');
+define('DB_PASS', 'authchallenge');
 define('DB_CHARSET', 'utf8');
 
 define('URL_PUBLIC_FOLDER', 'public');
