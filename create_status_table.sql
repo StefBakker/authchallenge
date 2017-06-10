@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2017 om 22:06
+-- Gegenereerd op: 10 jun 2017 om 22:07
 -- Serverversie: 5.7.11
 -- PHP-versie: 5.6.29
 
@@ -23,34 +23,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `exams`
+-- Tabelstructuur voor tabel `status`
 --
 
-DROP TABLE IF EXISTS `exams`;
-CREATE TABLE `exams` (
+DROP TABLE IF EXISTS `status`;
+CREATE TABLE `status` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `in_school` int(11) NOT NULL,
-  `in_company` int(11) NOT NULL
+  `name` varchar(20) NOT NULL,
+  `class` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `exams`
+-- Gegevens worden geëxporteerd voor tabel `status`
 --
 
-INSERT INTO `exams` (`id`, `name`, `in_school`, `in_company`) VALUES
-(1, 'proeve 1 (ontwerpen)', 0, 1),
-(2, 'proeve 2 (realiseren)', 1, 0),
-(3, 'proeve 3 (opleveren)', 0, 1);
+INSERT INTO `status` (`id`, `name`, `class`) VALUES
+(0, 'te bevestigen', 'label-warning'),
+(1, 'bevestigd', 'label-success'),
+(2, 'geweigerd', 'label-warning'),
+(3, 'uitgevoerd', 'label-default'),
+(4, 'niet uitgevoerd', 'label-danger');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `exams`
+-- Indexen voor tabel `status`
 --
-ALTER TABLE `exams`
+ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +59,10 @@ ALTER TABLE `exams`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `exams`
+-- AUTO_INCREMENT voor een tabel `status`
 --
-ALTER TABLE `exams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2017 om 20:48
+-- Gegenereerd op: 10 jun 2017 om 22:07
 -- Serverversie: 5.7.11
 -- PHP-versie: 5.6.29
 
@@ -34,11 +34,6 @@ CREATE TABLE `users` (
   `docent` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Tabel leegmaken voor invoegen `users`
---
-
-TRUNCATE TABLE `users`;
 --
 -- Gegevens worden geëxporteerd voor tabel `users`
 --

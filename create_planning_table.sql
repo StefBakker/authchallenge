@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2017 om 20:49
+-- Gegenereerd op: 10 jun 2017 om 22:06
 -- Serverversie: 5.7.11
 -- PHP-versie: 5.6.29
 
@@ -35,26 +35,24 @@ CREATE TABLE `planning` (
   `time` time NOT NULL,
   `examiner_1_id` int(11) NOT NULL,
   `examiner_2_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL
+  `company_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL DEFAULT '0',
+  `result_id` int(11) NOT NULL DEFAULT '0',
+  `remarks` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Tabel leegmaken voor invoegen `planning`
---
-
-TRUNCATE TABLE `planning`;
 --
 -- Gegevens worden geëxporteerd voor tabel `planning`
 --
 
-INSERT INTO `planning` (`id`, `exam_id`, `student_id`, `date`, `time`, `examiner_1_id`, `examiner_2_id`, `company_id`) VALUES
-(1, 1, 2, '2017-06-07', '09:00:00', 6, 8, 1),
-(2, 3, 2, '2017-06-07', '09:00:00', 6, 8, 1),
-(3, 2, 2, '2017-04-05', '14:15:00', 3, 4, 1),
-(4, 1, 5, '2017-06-07', '09:00:00', 6, 8, 1),
-(5, 3, 5, '2017-06-07', '09:00:00', 6, 8, 1),
-(6, 2, 5, '2017-04-05', '14:15:00', 3, 4, 1),
-(7, 2, 5, '2017-04-19', '14:15:00', 3, 4, 1);
+INSERT INTO `planning` (`id`, `exam_id`, `student_id`, `date`, `time`, `examiner_1_id`, `examiner_2_id`, `company_id`, `status_id`, `result_id`, `remarks`) VALUES
+(1, 1, 2, '2017-06-07', '09:00:00', 6, 8, 1, 3, 2, ''),
+(2, 3, 2, '2017-06-07', '09:00:00', 6, 8, 1, 3, 1, ''),
+(3, 2, 2, '2017-04-05', '14:15:00', 3, 4, 1, 4, 0, ''),
+(4, 1, 5, '2017-06-07', '09:00:00', 6, 8, 2, 0, 0, ''),
+(5, 3, 5, '2017-06-07', '09:00:00', 6, 8, 2, 0, 0, ''),
+(6, 2, 5, '2017-04-05', '14:15:00', 3, 4, 2, 0, 0, ''),
+(7, 2, 5, '2017-04-19', '14:15:00', 3, 4, 2, 0, 0, '');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -69,7 +67,9 @@ ALTER TABLE `planning`
   ADD KEY `student_id` (`student_id`),
   ADD KEY `examiner_1_id` (`examiner_1_id`),
   ADD KEY `examiner_2_id` (`examiner_2_id`),
-  ADD KEY `company_id` (`company_id`);
+  ADD KEY `company_id` (`company_id`),
+  ADD KEY `status_id` (`status_id`),
+  ADD KEY `results_id` (`result_id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen

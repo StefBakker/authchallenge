@@ -23,34 +23,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `exams`
+-- Tabelstructuur voor tabel `results`
 --
 
-DROP TABLE IF EXISTS `exams`;
-CREATE TABLE `exams` (
+DROP TABLE IF EXISTS `results`;
+CREATE TABLE `results` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `in_school` int(11) NOT NULL,
-  `in_company` int(11) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `class` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `exams`
+-- Gegevens worden geëxporteerd voor tabel `results`
 --
 
-INSERT INTO `exams` (`id`, `name`, `in_school`, `in_company`) VALUES
-(1, 'proeve 1 (ontwerpen)', 0, 1),
-(2, 'proeve 2 (realiseren)', 1, 0),
-(3, 'proeve 3 (opleveren)', 0, 1);
+INSERT INTO `results` (`id`, `name`, `class`) VALUES
+(0, 'geen uitslag bekend', 'label-default'),
+(1, 'gezakt', 'label-danger'),
+(2, 'geslaagd', 'label-success');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `exams`
+-- Indexen voor tabel `results`
 --
-ALTER TABLE `exams`
+ALTER TABLE `results`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,9 +57,9 @@ ALTER TABLE `exams`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `exams`
+-- AUTO_INCREMENT voor een tabel `results`
 --
-ALTER TABLE `exams`
+ALTER TABLE `results`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2017 om 20:49
+-- Gegenereerd op: 10 jun 2017 om 22:06
 -- Serverversie: 5.7.11
 -- PHP-versie: 5.6.29
 
@@ -33,11 +33,6 @@ CREATE TABLE `examiners` (
   `code` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Tabel leegmaken voor invoegen `examiners`
---
-
-TRUNCATE TABLE `examiners`;
 --
 -- Gegevens worden geëxporteerd voor tabel `examiners`
 --
