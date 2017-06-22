@@ -43,6 +43,17 @@ function getPlanning($id)
     return $query->fetch();
 }
 
+function getExamIdName() {
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT id, name FROM exams";
+    $query = $db->prepare($sql);
+    $query->execute(array());
+    $db = null;
+
+    return $query->fetchAll();
+}
+
 function updatePlanning($id, $newstatus, $newresult = 0) {
     $plan = getPlanning($id);
 
@@ -72,6 +83,12 @@ function updatePlanning($id, $newstatus, $newresult = 0) {
     $db = null;
 
     return true;
+}
+
+function createPlanning() {
+    $_SESSION['errors'][] = 'Not implemented: PlanningModel.php -> createPlanning()';
+    $_SESSION['errors'][] = implode(', ', $_POST);
+    return false;
 }
 
 function _sql() {

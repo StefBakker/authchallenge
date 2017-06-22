@@ -1,13 +1,38 @@
 <?php
 
 require(ROOT . "model/PlanningModel.php");
+require(ROOT . "model/UserModel.php");
+
+/*
+highlight_string("<?php\n\$data =\n" . var_export($exam_ids, true) . ";\n?>");
+*/
+
 
 function all() {
-    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om alle geplande examens.'); return false; }
+    if ( isDocent() == false ) { sendRedirectWithError('U hebt niet de juiste rechten om alle geplande examens te zien.'); return false; }
 
     render("planning/all", array(
         'planning' => getFullPlanning()
     ));
+}
+
+// TOON leeg invulscherm
+function create() {
+    render("planning/create", array(
+        'exam_id_names' => getExamIdName(),
+        'student_id_names' => getAllUsers(),
+    ) );
+}
+
+function createSave() {
+    $_SESSION['previous_post_data'] = $_POST;
+
+    if (! createPlanning() ) {
+        // spring terug naar invoerscherm
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    } else {
+        header("Location:" . URL . 'planning/all');
+    }
 }
 
 function student() {
